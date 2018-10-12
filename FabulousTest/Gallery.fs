@@ -3,6 +3,7 @@
 module Gallery =
     open Fabulous.Core
     open Fabulous.DynamicViews
+    open Xamarin.Forms
     
     type Model = {
         ImageUrls : string list
@@ -41,7 +42,8 @@ module Gallery =
                 selectedItem = model.SelectedImageIndex,
                 itemTapped =  (fun idx -> dispatch(Some idx |> SelectImage)),
                 items = [for img in model.ImageUrls do 
-                            yield View.Image(source = img)]
+                            yield View.Image(source = img, 
+                                margin = Thickness(5.0) )]
             )
         )
     
